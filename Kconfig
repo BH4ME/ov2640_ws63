@@ -8,9 +8,41 @@ config OV2640_WS63_DEMO
 config OV2640_WS63_TIMEOUT_MS
     int "OV2640 capture timeout (ms)"
     depends on OV2640_WS63_DEMO
-    default 200
+    default 500
 
 config OV2640_WS63_FRAME_BUF_SIZE
-    int "OV2640 frame buffer size (bytes)"
+    int "OV2640 JPEG frame buffer size (bytes)"
     depends on OV2640_WS63_DEMO
-    default 202752
+    default 65536
+
+config OV2640_WS63_FRAMESIZE
+    int "OV2640 output framesize"
+    depends on OV2640_WS63_DEMO
+    default 1
+    help
+        0: QQVGA 160x120
+        1: QVGA 320x240
+        2: CIF 352x288
+        3: VGA 640x480
+        4: SVGA 800x600
+
+config OV2640_WS63_JPEG_QUALITY
+    int "OV2640 JPEG quality"
+    depends on OV2640_WS63_DEMO
+    range 0 63
+    default 12
+    help
+        OV2640 QS value. Lower values produce better quality and larger JPEG frames.
+
+config OV2640_WS63_PCLK_DIV
+    int "OV2640 DVP PCLK divider"
+    depends on OV2640_WS63_DEMO
+    range 1 63
+    default 8
+
+config OV2640_WS63_UART_BAUDRATE
+    int "XCAM UART baudrate"
+    depends on OV2640_WS63_DEMO
+    default 921600
+    help
+        UART baudrate used to stream raw JPEG bytes to the PC-side XCAM viewer.
