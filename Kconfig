@@ -1,0 +1,16 @@
+config OV2640_WS63_DEMO
+    bool "Enable OV2640 WS63 demo"
+    default n
+    help
+        Enable a demo task that initializes OV2640 and captures one frame
+        with GPIO-emulated DVP parallel sampling.
+
+config OV2640_WS63_TIMEOUT_MS
+    int "OV2640 capture timeout (ms)"
+    depends on OV2640_WS63_DEMO
+    default 200
+
+config OV2640_WS63_FRAME_BUF_SIZE
+    int "OV2640 frame buffer size (bytes)"
+    depends on OV2640_WS63_DEMO
+    default 202752
